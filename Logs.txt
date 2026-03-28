@@ -1,0 +1,147 @@
+D:\zip-watcher>py main.py   
+2026-03-28 11:00:16  INFO      ============================================================
+2026-03-28 11:00:16  INFO        ZIP WATCHER — Automated SD-Task Monitor
+2026-03-28 11:00:16  INFO      ============================================================
+2026-03-28 11:00:16  INFO        Watch Directory : D:\Test_watcher
+2026-03-28 11:00:16  INFO        Active Schedule :
+2026-03-28 11:00:16  INFO          Tuesday      → Deadline 04:15 CST
+2026-03-28 11:00:16  INFO          Wednesday    → Deadline 04:15 CST
+2026-03-28 11:00:16  INFO          Thursday     → Deadline 04:15 CST
+2026-03-28 11:00:16  INFO          Friday       → Deadline 04:15 CST
+2026-03-28 11:00:16  INFO          Saturday     → Deadline 06:00 CST
+2026-03-28 11:00:16  INFO      ============================================================
+2026-03-28 11:00:16  INFO      👁️  Watcher started on: D:\Test_watcher
+2026-03-28 11:00:16  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:00:16  INFO        Scheduled PRE-WARNING  TUE 03:45 CST
+2026-03-28 11:00:16  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:00:16  INFO        Scheduled POST-ALERT   TUE 04:45 CST
+2026-03-28 11:00:16  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:00:16  INFO        Scheduled SUMMARY      TUE 23:00 CST
+2026-03-28 11:00:16  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:00:16  INFO        Scheduled PRE-WARNING  WED 03:45 CST
+2026-03-28 11:00:16  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:00:16  INFO        Scheduled POST-ALERT   WED 04:45 CST
+2026-03-28 11:00:16  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:00:16  INFO        Scheduled SUMMARY      WED 23:00 CST
+2026-03-28 11:00:16  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:00:16  INFO        Scheduled PRE-WARNING  THU 03:45 CST
+2026-03-28 11:00:16  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:00:16  INFO        Scheduled POST-ALERT   THU 04:45 CST
+2026-03-28 11:00:16  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:00:16  INFO        Scheduled SUMMARY      THU 23:00 CST
+2026-03-28 11:00:16  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:00:16  INFO        Scheduled PRE-WARNING  FRI 03:45 CST
+2026-03-28 11:00:16  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:00:16  INFO        Scheduled POST-ALERT   FRI 04:45 CST
+2026-03-28 11:00:16  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:00:16  INFO        Scheduled SUMMARY      FRI 23:00 CST
+2026-03-28 11:00:16  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:00:16  INFO        Scheduled PRE-WARNING  SAT 05:30 CST
+2026-03-28 11:00:16  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:00:16  INFO        Scheduled POST-ALERT   SAT 06:30 CST
+2026-03-28 11:00:16  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:00:16  INFO        Scheduled SUMMARY      SAT 23:00 CST
+2026-03-28 11:00:16  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:00:16  INFO        Scheduled MIDNIGHT RESET  daily at 00:00 CST
+2026-03-28 11:00:16  INFO      Added job "Pre-deadline warning (tue)" to job store "default"
+2026-03-28 11:00:16  INFO      Added job "Post-deadline alert (tue)" to job store "default"
+2026-03-28 11:00:16  INFO      Added job "Daily summary (tue)" to job store "default"
+2026-03-28 11:00:16  INFO      Added job "Pre-deadline warning (wed)" to job store "default"
+2026-03-28 11:00:16  INFO      Added job "Post-deadline alert (wed)" to job store "default"
+2026-03-28 11:00:16  INFO      Added job "Daily summary (wed)" to job store "default"
+2026-03-28 11:00:16  INFO      Added job "Pre-deadline warning (thu)" to job store "default"
+2026-03-28 11:00:16  INFO      Added job "Post-deadline alert (thu)" to job store "default"
+2026-03-28 11:00:16  INFO      Added job "Daily summary (thu)" to job store "default"
+2026-03-28 11:00:16  INFO      Added job "Pre-deadline warning (fri)" to job store "default"
+2026-03-28 11:00:16  INFO      Added job "Post-deadline alert (fri)" to job store "default"
+2026-03-28 11:00:16  INFO      Added job "Daily summary (fri)" to job store "default"
+2026-03-28 11:00:16  INFO      Added job "Pre-deadline warning (sat)" to job store "default"
+2026-03-28 11:00:16  INFO      Added job "Post-deadline alert (sat)" to job store "default"
+2026-03-28 11:00:16  INFO      Added job "Daily summary (sat)" to job store "default"
+2026-03-28 11:00:16  INFO      Added job "Midnight state reset" to job store "default"
+2026-03-28 11:00:16  INFO      Scheduler started
+2026-03-28 11:00:16  INFO      ⏰ Scheduler started. All jobs registered.
+2026-03-28 11:00:16  INFO      🟢 System running. Press Ctrl+C to stop.
+
+2026-03-28 11:00:49  INFO      📦 ZIP detected: 28032026.zip at 11:00:49
+2026-03-28 11:00:53  INFO      ✅ Email sent | Subject: ✅ [ZIP WATCHER] File Received: 28032026.zip | To: ['pubgraman53@gmail.com']
+2026-03-28 11:02:17  INFO      📦 ZIP detected: 20260325.zip at 11:02:17
+2026-03-28 11:02:22  INFO      ✅ Email sent | Subject: ✅ [ZIP WATCHER] File Received: 20260325.zip | To: ['pubgraman53@gmail.com']
+2026-03-28 11:07:30  INFO      📦 ZIP detected: 20260324.zip at 11:07:30
+2026-03-28 11:07:34  INFO      ✅ Email sent | Subject: ✅ [ZIP WATCHER] File Received: 20260324.zip | To: ['pubgraman53@gmail.com']
+2026-03-28 11:10:45  INFO      🛑 Shutdown requested.
+2026-03-28 11:10:45  INFO      🛑 Watcher stopped.
+2026-03-28 11:10:45  INFO      Scheduler has been shut down
+2026-03-28 11:10:45  INFO      ✅ ZIP Watcher stopped cleanly.
+
+D:\zip-watcher>py main.py
+2026-03-28 11:10:50  INFO      ============================================================
+2026-03-28 11:10:50  INFO        ZIP WATCHER — Automated SD-Task Monitor
+2026-03-28 11:10:50  INFO      ============================================================
+2026-03-28 11:10:50  INFO        Watch Directory : D:\Test_watcher
+2026-03-28 11:10:50  INFO        Active Schedule :
+2026-03-28 11:10:50  INFO          Tuesday      → Deadline 04:15 CST
+2026-03-28 11:10:50  INFO          Wednesday    → Deadline 04:15 CST
+2026-03-28 11:10:50  INFO          Thursday     → Deadline 04:15 CST
+2026-03-28 11:10:50  INFO          Friday       → Deadline 04:15 CST
+2026-03-28 11:10:50  INFO          Saturday     → Deadline 06:00 CST
+2026-03-28 11:10:50  INFO      ============================================================
+2026-03-28 11:10:50  INFO      👁️  Watcher started on: D:\Test_watcher
+2026-03-28 11:10:50  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:10:50  INFO        Scheduled PRE-WARNING  TUE 03:45 CST
+2026-03-28 11:10:50  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:10:50  INFO        Scheduled POST-ALERT   TUE 04:45 CST
+2026-03-28 11:10:50  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:10:50  INFO        Scheduled SUMMARY      TUE 23:00 CST
+2026-03-28 11:10:50  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:10:50  INFO        Scheduled PRE-WARNING  WED 03:45 CST
+2026-03-28 11:10:50  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:10:50  INFO        Scheduled POST-ALERT   WED 04:45 CST
+2026-03-28 11:10:50  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:10:50  INFO        Scheduled SUMMARY      WED 23:00 CST
+2026-03-28 11:10:50  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:10:50  INFO        Scheduled PRE-WARNING  THU 03:45 CST
+2026-03-28 11:10:50  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:10:50  INFO        Scheduled POST-ALERT   THU 04:45 CST
+2026-03-28 11:10:50  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:10:50  INFO        Scheduled SUMMARY      THU 23:00 CST
+2026-03-28 11:10:50  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:10:50  INFO        Scheduled PRE-WARNING  FRI 03:45 CST
+2026-03-28 11:10:50  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:10:50  INFO        Scheduled POST-ALERT   FRI 04:45 CST
+2026-03-28 11:10:50  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:10:50  INFO        Scheduled SUMMARY      FRI 23:00 CST
+2026-03-28 11:10:50  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:10:50  INFO        Scheduled PRE-WARNING  SAT 05:30 CST
+2026-03-28 11:10:50  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:10:50  INFO        Scheduled POST-ALERT   SAT 06:30 CST
+2026-03-28 11:10:50  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:10:50  INFO        Scheduled SUMMARY      SAT 23:00 CST
+2026-03-28 11:10:50  INFO      Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-28 11:10:50  INFO        Scheduled MIDNIGHT RESET  daily at 00:00 CST
+2026-03-28 11:10:50  INFO      Added job "Pre-deadline warning (tue)" to job store "default"
+2026-03-28 11:10:50  INFO      Added job "Post-deadline alert (tue)" to job store "default"
+2026-03-28 11:10:50  INFO      Added job "Daily summary (tue)" to job store "default"
+2026-03-28 11:10:50  INFO      Added job "Pre-deadline warning (wed)" to job store "default"
+2026-03-28 11:10:50  INFO      Added job "Post-deadline alert (wed)" to job store "default"
+2026-03-28 11:10:50  INFO      Added job "Daily summary (wed)" to job store "default"
+2026-03-28 11:10:50  INFO      Added job "Pre-deadline warning (thu)" to job store "default"
+2026-03-28 11:10:50  INFO      Added job "Post-deadline alert (thu)" to job store "default"
+2026-03-28 11:10:50  INFO      Added job "Daily summary (thu)" to job store "default"
+2026-03-28 11:10:50  INFO      Added job "Pre-deadline warning (fri)" to job store "default"
+2026-03-28 11:10:50  INFO      Added job "Post-deadline alert (fri)" to job store "default"
+2026-03-28 11:10:50  INFO      Added job "Daily summary (fri)" to job store "default"
+2026-03-28 11:10:50  INFO      Added job "Pre-deadline warning (sat)" to job store "default"
+2026-03-28 11:10:50  INFO      Added job "Post-deadline alert (sat)" to job store "default"
+2026-03-28 11:10:50  INFO      Added job "Daily summary (sat)" to job store "default"
+2026-03-28 11:10:50  INFO      Added job "Midnight state reset" to job store "default"
+2026-03-28 11:10:50  INFO      Scheduler started
+2026-03-28 11:10:50  INFO      ⏰ Scheduler started. All jobs registered.
+2026-03-28 11:10:50  INFO      🟢 System running. Press Ctrl+C to stop.
+
+2026-03-28 11:11:45  INFO      📦 ZIP detected: 20260324 - Copy.zip at 11:11:45
+2026-03-28 11:11:49  INFO      ✅ Email sent | Subject: ✅ [ZIP WATCHER] File Received: 20260324 - Copy.zip | To: ['pubgraman53@gmail.com', 'srujankinjawadekar43@gmail.com']
+2026-03-28 11:13:28  INFO      🛑 Shutdown requested.
+2026-03-28 11:13:28  INFO      🛑 Watcher stopped.
+2026-03-28 11:13:28  INFO      Scheduler has been shut down
+2026-03-28 11:13:28  INFO      ✅ ZIP Watcher stopped cleanly.
