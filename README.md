@@ -113,34 +113,30 @@ zip-watcher/
 
 ## 🔄 System Flowchart
 
-```mermaid
 flowchart TD
+A[Start Monitoring Service] --> B{Is Today Active Day?}
 
-    A[Start Monitoring Service] --> B{Is Today Active Day?}
+B -- No --> Z[No Action (Sunday & Monday)]
+B -- Yes --> C[Start Watch Folder Monitoring]
 
-    B -- No --> Z[No Action (Sunday & Monday)]
-    B -- Yes --> C[Start Watch Folder Monitoring]
+C --> D{ZIP File Detected?}
 
-    C --> D{ZIP File Detected?}
+D -- Yes --> E[Mark Task Done]
+E --> F[Send Success Email]
+F --> G[Log Event]
 
-    D -- Yes --> E[Mark Task Done]
-    E --> F[Send Success Email]
-    F --> G[Log Event]
+D -- No --> H{Time Check}
+H --> I[30 Min Before Deadline]
+I --> J[Send Warning Email]
+H --> K[Deadline Passed + 30 Min]
+K --> L{Task Done?}
 
-    D -- No --> H{Time Check}
+L -- No --> M[Send High Alert Email]
+L -- Yes --> G
 
-    H --> I[30 Min Before Deadline]
-    I --> J[Send Warning Email]
+G --> N{Is Time 11:00 PM?}
 
-    H --> K[Deadline Passed + 30 Min]
-    K --> L{Task Done?}
+N -- Yes --> O[Send Daily Summary Email]
+N -- No --> C
 
-    L -- No --> M[Send High Alert Email]
-    L -- Yes --> G
-
-    G --> N{Is Time 11:00 PM?}
-
-    N -- Yes --> O[Send Daily Summary Email]
-    N -- No --> C
-
-    O --> C
+O --> C
