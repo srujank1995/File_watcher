@@ -113,30 +113,54 @@ zip-watcher/
 
 ## 🔄 System Flowchart
 
-flowchart TD
-A[Start Monitoring Service] --> B{Is Today Active Day?}
-
-B -- No --> Z[No Action (Sunday & Monday)]
-B -- Yes --> C[Start Watch Folder Monitoring]
-
-C --> D{ZIP File Detected?}
-
-D -- Yes --> E[Mark Task Done]
-E --> F[Send Success Email]
-F --> G[Log Event]
-
-D -- No --> H{Time Check}
-H --> I[30 Min Before Deadline]
-I --> J[Send Warning Email]
-H --> K[Deadline Passed + 30 Min]
-K --> L{Task Done?}
-
-L -- No --> M[Send High Alert Email]
-L -- Yes --> G
-
-G --> N{Is Time 11:00 PM?}
-
-N -- Yes --> O[Send Daily Summary Email]
-N -- No --> C
-
-O --> C
+                    ┌───────────────────────────┐
+                    │        Start              │
+                    │  (Initialize Workflow)    │
+                    └─────────────┬─────────────┘
+                                  │
+                                  ▼
+                    ┌───────────────────────────┐
+                    │   File Watcher Trigger    │
+                    │ (Monitor Folder/Events)   │
+                    └─────────────┬─────────────┘
+                                  │
+                                  ▼
+                    ┌───────────────────────────┐
+                    │  Detect File Change/Event │
+                    │ (Create/Modify/Delete)    │
+                    └─────────────┬─────────────┘
+                                  │
+                     ┌────────────┴────────────┐
+                     │                         │
+                     ▼                         ▼
+        ┌──────────────────────┐    ┌──────────────────────┐
+        │  Valid File/Event?   │    │   Invalid / Ignore   │
+        │  (Filter Logic)      │    │  (Skip Processing)   │
+        └──────────┬───────────┘    └──────────┬───────────┘
+                   │ YES                       │
+                   ▼                           ▼
+        ┌───────────────────────────┐   ┌──────────────────┐
+        │   Process File / Data     │   │ Continue Watching│
+        │ (Parsing / Validation)    │   └──────────────────┘
+        └─────────────┬─────────────┘
+                      │
+                      ▼
+        ┌───────────────────────────┐
+        │   AI Agent Decision Node  │
+        │ (Analyze / Take Action)   │
+        └─────────────┬─────────────┘
+                      │
+        ┌─────────────┴─────────────┐
+        │                           │
+        ▼                           ▼
+┌──────────────────────┐   ┌────────────────────────┐
+│  Trigger Workflow    │   │  Log / Store Results   │
+│ (Automation Action)  │   │ (DB / Logs / Alerts)   │
+└──────────┬───────────┘   └──────────┬─────────────┘
+           │                          │
+           └─────────────┬────────────┘
+                         ▼
+            ┌───────────────────────────┐
+            │   Continue Monitoring     │
+            │  (Loop / Persistent Run)  │
+            └───────────────────────────┘
