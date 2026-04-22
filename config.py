@@ -11,8 +11,8 @@ load_dotenv()
 # ─────────────────────────────────────────────
 # WATCH DIRECTORY
 # ─────────────────────────────────────────────
-WATCH_DIR = r"D:\Test_watcher"           # Directory to monitor for ZIP files
-ARCHIVE_DIR = r"D:\Test_watcher\Archive" # Auto-archive not selected; kept for reference
+WATCH_DIR = r"dir path"           # Directory to monitor for ZIP files
+ARCHIVE_DIR = r"archive dir path" # Auto-archive not selected; kept for reference
 
 # ─────────────────────────────────────────────
 # EMAIL SETTINGS (loaded from .env)
@@ -24,8 +24,9 @@ SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "your_app_password")
 
 # Who receives the alerts
 ALERT_RECIPIENTS = [
-    "abc@gmail.com",
-    "xyz@gmail.com",
+    'recepient.example@gmail.com',  # Replace with actual recipient email addresses
+    'recipient2.example@gmail.com'  # Add more recipients as needed
+
 
 ]
 
@@ -46,8 +47,9 @@ SCHEDULE = {
 ACTIVE_DAYS = list(SCHEDULE.keys())   # [1, 2, 3, 4, 5]
 
 # Alert offsets (minutes)
-PRE_ALERT_OFFSET_MINUTES  = 30   # warn 30 min BEFORE deadline
-POST_ALERT_OFFSET_MINUTES = 30   # high alert 30 min AFTER deadline
+PRE_ALERT_OFFSET_MINUTES     = 30   # warn 30 min BEFORE deadline
+PRE_ALERT_15MIN_OFFSET       = 15   # warn 15 min BEFORE deadline
+POST_ALERT_OFFSET_MINUTES    = 5    # high alert 5 min AFTER deadline
 
 # ─────────────────────────────────────────────
 # DAILY SUMMARY TIME (CST)

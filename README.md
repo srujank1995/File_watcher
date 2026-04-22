@@ -14,7 +14,7 @@
 
 ### Schedule
 | Day | Deadline (CST) |
-|---|---|
+|---  |---             |
 | Tuesday – Friday | 4:15 AM |
 | Saturday | 6:00 AM |
 | Sunday & Monday | OFF |
@@ -109,3 +109,38 @@ zip-watcher/
 | ZIP not detected | Ensure file is fully copied before watchdog fires; large files may need a brief delay |
 | Service won't start | Check `logs\service_stderr.log` for errors |
 "# File_watcher" 
+
+
+## 🔄 System Flowchart
+
+```mermaid
+flowchart TD
+
+    A[Start Monitoring Service] --> B{Is Today Active Day?}
+
+    B -- No --> Z[No Action (Sunday & Monday)]
+    B -- Yes --> C[Start Watch Folder Monitoring]
+
+    C --> D{ZIP File Detected?}
+
+    D -- Yes --> E[Mark Task Done]
+    E --> F[Send Success Email]
+    F --> G[Log Event]
+
+    D -- No --> H{Time Check}
+
+    H --> I[30 Min Before Deadline]
+    I --> J[Send Warning Email]
+
+    H --> K[Deadline Passed + 30 Min]
+    K --> L{Task Done?}
+
+    L -- No --> M[Send High Alert Email]
+    L -- Yes --> G
+
+    G --> N{Is Time 11:00 PM?}
+
+    N -- Yes --> O[Send Daily Summary Email]
+    N -- No --> C
+
+    O --> C

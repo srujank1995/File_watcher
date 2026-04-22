@@ -80,7 +80,32 @@ def send_warning_mail(deadline: datetime):
 
 
 # ─────────────────────────────────────────────────────────────
-# 3. HIGH ALERT — 30 minutes AFTER deadline, task not done
+# 2b. PRE-DEADLINE WARNING (15 MIN) — 15 minutes before deadline
+# ─────────────────────────────────────────────────────────────
+def send_warning_15min_mail(deadline: datetime):
+    subject = "⚠️ [ZIP WATCHER] URGENT — 15 Minutes to SD-Task Deadline!"
+    body = f"""
+    <html><body style="font-family:Arial,sans-serif;padding:20px;background:#fffacd;">
+        <h2 style="color:#d32f2f;">⚠️ URGENT: SD-Task Deadline in 15 Minutes!</h2>
+        <p style="font-size:16px;color:#d32f2f;">The SD-Task ZIP file has <b>NOT yet been received</b>.</p>
+        <table style="border-collapse:collapse;width:100%;max-width:500px;">
+            <tr><td style="padding:8px;background:#ffcccc;font-weight:bold;">Deadline</td>
+                <td style="padding:8px;color:#d32f2f;"><b>{deadline.strftime('%A, %B %d %Y — %I:%M %p CST')}</b></td></tr>
+            <tr><td style="padding:8px;background:#ffcccc;font-weight:bold;">Time Remaining</td>
+                <td style="padding:8px;color:#d32f2f;"><b>~15 Minutes ⏰</b></td></tr>
+            <tr><td style="padding:8px;background:#ffcccc;font-weight:bold;">Action</td>
+                <td style="padding:8px;"><b>IMMEDIATE ACTION REQUIRED</b> — Paste the ZIP file NOW</td></tr>
+        </table>
+        <p style="color:#b71c1c;margin-top:20px;font-size:15px;">
+            🚨 If not completed within 15 minutes, a CRITICAL ALERT will be sent.
+        </p>
+    </body></html>
+    """
+    _send(subject, body, ALERT_RECIPIENTS)
+
+
+# ─────────────────────────────────────────────────────────────
+# 3. HIGH ALERT — 5 minutes AFTER deadline, task not done
 # ─────────────────────────────────────────────────────────────
 def send_high_alert_mail(deadline: datetime):
     subject = "🚨 [ZIP WATCHER] HIGH ALERT — SD-Task NOT Performed!"

@@ -1,19 +1,21 @@
 """
 scheduler.py — APScheduler jobs for:
-  • Pre-deadline warning  (deadline - 30 min)
-  • Post-deadline alert   (deadline + 30 min)
-  • Daily summary         (11:00 PM CST each active day)
+  • Pre-deadline warning (30 min)  (deadline - 30 min)
+  • Pre-deadline warning (15 min)  (deadline - 15 min)
+  • Post-deadline alert            (deadline + 5 min)
+  • Daily summary                  (11:00 PM CST each active day)
   • Midnight state reset
 """
 
 import logging
 from datetime import datetime, timedelta
+from typing import Optional
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
 import pytz
 
-from config import SCHEDULE, ACTIVE_DAYS, PRE_ALERT_OFFSET_MINUTES, POST_ALERT_OFFSET_MINUTES, SUMMARY_HOUR, SUMMARY_MINUTE
-from mailer import send_warning_mail, send_high_alert_mail, send_daily_summary
+from config import SCHEDULE, ACTIVE_DAYS, PRE_ALERT_OFFSET_MINUTES, PRE_ALERT_15MIN_OFFSET, POST_ALERT_OFFSET_MINUTES, SUMMARY_HOUR, SUMMARY_MINUTE
+from mailer import send_warning_mail, send_warning_15min_mail, send_high_alert_mail, send_daily_summary
 import state
 
 logger = logging.getLogger(__name__)
@@ -21,7 +23,7 @@ logger = logging.getLogger(__name__)
 CST = pytz.timezone("America/Chicago")
 
 
-def _get_deadline_today() -> datetime:
+def _get_deadline_today() -> Optional[datetime]:
     """Return today's deadline as a timezone-aware datetime in CST."""
     now_cst = datetime.now(CST)
     day_config = SCHEDULE.get(now_cst.weekday())
@@ -38,8 +40,20 @@ def job_pre_deadline_warning():
     if state.task_done:
         logger.info("Pre-deadline check: task already done ✅ — skipping warning.")
         return
-    logger.warning("⚠️  Pre-deadline warning triggered. Sending warning email.")
+    logger.warning("⚠️  Pre-deadline warning (30 min) triggered. Sending warning email.")
     send_warning_mail(deadline)
+
+
+def job_pre_deadline_warning_15min():
+    """Triggered 15 min before deadline. URGENT warn if task is not yet done."""
+    deadline = _get_deadline_today()
+    if deadline is None:
+        return
+    if state.task_done:
+        logger.info("Pre-deadline 15-min check: task already done ✅ — skipping warning.")
+        return
+    logger.warning("⚠️  Pre-deadline warning (15 min) triggered. Sending urgent email.")
+    send_warning_15min_mail(deadline)
 
 
 def job_post_deadline_alert():
@@ -96,16 +110,28 @@ def build_scheduler() -> BackgroundScheduler:
         pre_dt        = deadline_dt - timedelta(minutes=PRE_ALERT_OFFSET_MINUTES)
         post_dt       = deadline_dt + timedelta(minutes=POST_ALERT_OFFSET_MINUTES)
 
-        # ── Pre-deadline warning ───────────────────────────────────
+        # ── Pre-deadline warning (30 min) ─────────────────────────
         scheduler.add_job(
             job_pre_deadline_warning,
             CronTrigger(day_of_week=day_abbr, hour=pre_dt.hour, minute=pre_dt.minute, timezone=CST),
             id=f"pre_warning_{day_abbr}",
-            name=f"Pre-deadline warning ({day_abbr})",
+            name=f"Pre-deadline warning 30min ({day_abbr})",
             replace_existing=True,
             misfire_grace_time=120,
         )
-        logger.info(f"  Scheduled PRE-WARNING  {day_abbr.upper()} {pre_dt.strftime('%H:%M')} CST")
+        logger.info(f"  Scheduled PRE-WARNING (30min)  {day_abbr.upper()} {pre_dt.strftime('%H:%M')} CST")
+
+        # ── Pre-deadline warning (15 min) ─────────────────────────
+        pre_15_dt = deadline_dt - timedelta(minutes=PRE_ALERT_15MIN_OFFSET)
+        scheduler.add_job(
+            job_pre_deadline_warning_15min,
+            CronTrigger(day_of_week=day_abbr, hour=pre_15_dt.hour, minute=pre_15_dt.minute, timezone=CST),
+            id=f"pre_warning_15min_{day_abbr}",
+            name=f"Pre-deadline warning 15min ({day_abbr})",
+            replace_existing=True,
+            misfire_grace_time=120,
+        )
+        logger.info(f"  Scheduled PRE-WARNING (15min)  {day_abbr.upper()} {pre_15_dt.strftime('%H:%M')} CST")
 
         # ── Post-deadline high alert ───────────────────────────────
         scheduler.add_job(
